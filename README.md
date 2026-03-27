@@ -1,2 +1,2 @@
 # VSB_MCU
-repositář pro výuku předmětů: ČMT VS AMvBI
+repositář pro výuku předmětů: ČMT, VS, AMvBI

@@ -1,4 +1,4 @@
-#include <demo_CHO0178/littleHelper.h>
+#include <littleHelper.h>
 #include "wdog.h"
 #include "MKL25Z4.h"
 
@@ -13,14 +13,14 @@
 /*
 DAC
 	DAT0L
-		DATA0			lower data pro p�evod
+		DATA0			lower data pro převod
 	DAT0H
-		DATA1			higher data pro p�evod
+		DATA1			higher data pro převod
 	C0
-		DACEN			povol� pou�it� 12bit DAC
+		DACEN			povolena použití 12bit DAC
 CMP
 	DACCR
-		DACEN			povol� nap�jen� vnit�n�ho DAC
+		DACEN			povolení napájení vnitřního DAC
 		VOSEL			voltage select
 	MUXCR
 		PSEL			multiplex to positive input of CMP
@@ -52,19 +52,19 @@ int main(void)
 	led_init();
 	setupNVICandPIT();
 
-	// povolte pou�it� 12bit DAC
-
-	// p�epn�te multiplex v periferii port tak, aby p�esm�roval sign�l z BNC konektoru J15 na v�stup periferie CMP0
-
-	// p�epn�te multiplex v periferii port tak, aby p�esm�roval sign�l z v�stupu DAC na BNC konektor
-
-	// nastavte priferii CMP tak aby v�stupn� hodnota vosel byla 0x20u a nastavte nap�jen� vnit�n�ho DAC periferie
-
-	// nastavte vstupn� multiplexory na kladn� vstup periferii DAC0 a z�porn� vstup signal DAC periferie CMP
-
-	// povol flag raising v periferii CMP
-
-	// povol v�stup a nap�jen� periferie CMP
+	// Povolte použití 12bit DAC
+	
+	// Přepněte multiplex v periferii port tak, aby přesměroval signál z BNC konektoru J15 na výstup periferie CMP0
+	
+	// Přepněte multiplex v periferii port tak, aby přesměroval signál z výstupu DAC na BNC konektor
+	
+	// Nastavte periferii CMP tak aby výstupní hodnota VOSEL byla 0x20u a nastavte napájení interního DAC periferie
+	
+	// Nastavte vstupní multiplexory na kladný vstup periferii DAC0 a záporný vstup signál DAC periferie CMP
+	
+	// Povol flag raising v periferii CMP
+	
+	// Povol výstup a napájení periferie CMP
 
 
 	while (1) {
@@ -104,9 +104,9 @@ void __attribute__ ((interrupt)) PIT_IRQHandler(void)
 
 void __attribute__ ((interrupt)) CMP0_IRQHandler(void)
 {
-	// prove�te vynulov�n� vyhozen�ho flagu (dejte si pozor aby jste nevynulovali povolen� flag�)
+	// proveďte vynulování vyhozeného flagu (dejte si pozor abyste nevynulovali povolení flagů)
 
-	// ��tej po�et vyvolan�ch interrupt� a ka�d� 50 vol�n� zv�t�i v�stup na diod� o 1
+	// čtěte počet vyvolaných interruptů a každých 50 volání zvětšit výstup na diodě o 1
 
 
 }

@@ -1,4 +1,4 @@
-#include <demo_CHO0178/littleHelper.h>
+#include <littleHelper.h>
 #include "wdog.h"
 #include "MKL25Z4.h"
 

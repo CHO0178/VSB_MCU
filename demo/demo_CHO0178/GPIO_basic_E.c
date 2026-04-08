@@ -49,13 +49,13 @@ void exercise1Setup()
 	// CZ: presmerujte signal z periferie GPIO na prislusny pin cervene diody
 	// EN: redirect signal from GPIO peripherals to pin associated with red part
 	//	   of RGB diode
-	PORTB->PCR[18] |= 1<<8;
+
 	// CZ: nastavte pin cervene led diody na output
 	// EN: setup pin of associated with red diode as output
-	GPIOB->PDDR |= 1<<18;
+	
 	// CZ: zapnete cervenou diodu
 	// EN: turn on red diode
-	GPIOB->PDOR &=~(1<<18);
+	
 }
 
 void exercise2Setup()
@@ -84,7 +84,7 @@ void exercise2Loop()
 
 	// CZ: zamestnej procesor
 	// EN: utilize processor
-
+	heavyFunction();
 	// CZ: vypni zelenou diodu
 	// EN: turn off green diode
 
@@ -103,18 +103,12 @@ void exercise4Setup()
 {
 	// CZ: presmerujte signal z periferie GPIO na příslušný pin tlacitka
 	// EN: redirect signal from GPIO peripherals to pin associated with button 1
-	PORTA->PCR[4] |= 1<<8;
+	
 }
 
 void exercise4Loop()
 {
 	// CZ: vlozte hodnotu z tlacitka na diodu
 	// EN: move value of button input to diode output
-	if(GPIOA->PDIR & (1<<4))
-	{
-		GPIOB->PDOR |= 1<<18;
-	}
-	else{
-		GPIOB->PDOR &=~(1<<18);
-	}
+
 }

@@ -1,4 +1,4 @@
-#include "demo_CHO0178/littleHelper.h"
+#include "littleHelper.h"
 #include "MKL25Z4.h"
 #include "wdog.h"
 #include "led.h"
@@ -51,12 +51,12 @@ int main(void)
 	// CZ: povol prijem preruseni pro port A a nastav prioritu na 2
 	// EN: enable processing of incoming interrupt signal from port A and set
 	// priority 2
-	NVIC_EnableIRQ(PORTA_IRQn);
-	NVIC_SetPriority(PORTA_IRQn,2);
+	
+	
 	// CZ: povol generovani preruseni v periferii port A pro sestupnou hranu
 	// EN: enable generating interrupt signal in port A for falling edge
 	// edge
-	PORTA->PCR[4] |= 0b1010<<16;
+	
 	while (1) {
 		wdog_refresh();
 		// CZ: zavolej funkci
@@ -71,7 +71,7 @@ void PORTA_IRQHandler(void)
 {
 	// CZ: vynuluj flag
 	// EN: reset flag
-	PORTA->PCR[4] |= 1<<24;
+	
 	// CZ: zavolej funkci
 	// EN: call function
 

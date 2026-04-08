@@ -59,7 +59,7 @@ void startContinuousMeasuring(int pot)
 {
 	// CZ: nastavte delicku hodinoveho signalu na 4 a 8-bitovou konverzi
 	// EN: set divider of signal source to divide by 4 and 8-bit conversion
-	ADC0->CFG1 |= 0b10<<5;
+	
 
 	// CZ: nastavte ADC na kontinualni mereni
 	// EN: set ADC continuous measurement
@@ -79,11 +79,11 @@ void setSingleTimeMeasurementOnTrigger()
 {
 	// CZ: nastavte delicku hodinoveho signalu na 4 a 8-bitovou konverzi
 	// EN: set divider of signal source to divide by 4 and 8-bit conversion
-	ADC0->CFG1 |= 0b10 <<5;
+	
 
 	// CZ: nastavte mereni na vzorkovani jednou
 	// EN: set measurement to sample once
-	ADC0->SC3 &= ~(1<<3);
+	
 }
 
 /**
@@ -97,13 +97,12 @@ int blockingMeasurementOfPotentiometer(int pot)
 	int result;
 	// CZ: spustte mereni hodnoty na potenciometru
 	// EN: trigger measuring of potentiometer voltage
-	ADC0->SC1[0] &= ~(0b11111);
-	ADC0->SC1[0] |= 10+pot;
+
 	// CZ: vyckejte na dokonceni konverze a zvednuti priznaku preruseni
 	// EN: wait for complete conversion flag to rise to rise
-	while(!(ADC0->SC1[0] & (1<<7))){}
+	
 
-	return ADC0->R[0];
+	return -1;
 }
 
 /**
@@ -135,8 +134,7 @@ void exercise1(){
 	while (1) {
 		// CZ: ziskejte hodnotu z potenciometru a nastavte bargraf
 		// EN: get value from potentiometer and set bargraph to this value
-		val = blockingMeasurementOfPotentiometer(2);
-		led_bindisp(val);
+
 	}
 }
 
@@ -157,11 +155,7 @@ void exercise2(){
 	while (1) {
 		// CZ: pokud je navracena hodnota vetsi nebo rovno 0 vykresli na bargraf
 		// EN: get value from potentiometer and set bargraph to this value
-		val = nonBlockingGetADCval();
-		if(val>=0)
-		{
-			led_bindisp(val);
-		}
+
 	}
 }
 
@@ -176,7 +170,7 @@ void exercise3(){
 
 	// CZ: zavolejte funkci pro nastaveni ADC
 	// EN: call initialize ADC
-
+	
 
 	while (1) {
 		// CZ: ziskejte hodnotu z obou potenciometru a nastavte bargraf

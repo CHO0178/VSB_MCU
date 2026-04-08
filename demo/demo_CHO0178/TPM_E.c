@@ -21,7 +21,7 @@ void main()
 {
 	// CZ: nastavte mux pro výstup signálu na BNC konektor J12
 	// EN: set multiplexer for output signal to BNC connector J12
-TPM0
+
 	// CZ: nastavte modulo hodnotu na PWM_PERIOD (kde vnikne problem?)
 	// EN: set modulo value to PWM_PERIOD (where is problem?)
 

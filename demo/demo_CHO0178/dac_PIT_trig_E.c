@@ -1,4 +1,4 @@
-#include <demo_STA048/CHO0178/littleHelper.h>
+#include <littleHelper.h>
 #include "wdog.h"
 #include "MKL25Z4.h"
 #include "sin_lut.h"
@@ -9,7 +9,7 @@ DAC
 	DAT0H
 		DATA1			higher data pro prevod
 	C0
-		DACEN			povoleni pouziti� 12bit DAC
+		DACEN			povoleni pouzití 12bit DAC
 
 
 */
@@ -25,7 +25,7 @@ void setupNVICandPIT();
 int main(void)
 {
 	wdog_init(WDOG_CONF_LPOCLK_1024_CYCLES);
-	// povolte pouziti� 12bit DAC
+	// povolte pouzití 12bit DAC
 
 	setupNVICandPIT();
 
@@ -54,7 +54,7 @@ void __attribute__ ((interrupt)) PIT_IRQHandler(void)
 
 	// vlozte hodnoty z sin_lut do registration DAT0L, DAT0H
 
-	// inkrementujte index ukazující na pøíští hodnotu použitou po DAC
+	// inkrementujte index ukazující na příští hodnotu použitou po DAC
 
-	// pøi pøesáhnutí indexu hodnoty SIN_LUT_DATA_LEN vynuluj index
+	// při přesáhnutí indexu hodnoty SIN_LUT_DATA_LEN vynuluj index
 }

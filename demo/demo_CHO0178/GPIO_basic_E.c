@@ -34,11 +34,9 @@ int main(void)
 	wdog_init(WDOG_CONF_DIS);
 
 	exercise1Setup();
-	exercise4Setup();
 
 	while (1) {
 		wdog_refresh();
-		exercise4Loop();
 	}
 
 	return 0;
@@ -90,7 +88,7 @@ void exercise2Loop()
 
 	// CZ: zamestnej procesor
 	// EN: utilize processor
-
+	heavyFunction();
 }
 
 void exercise3Loop()

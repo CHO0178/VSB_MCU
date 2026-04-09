@@ -8,7 +8,12 @@
 #define toogleBitInRegister(REG, pos)  						REG ^= 1 << pos
 #define changeMultipleBitInRegister(REG, DATA, MASK, pos)   REG = (DATA << pos) | (REG & (~(MASK & REG)))
 #define setMultipleBitsInRegister(REG,DATA,MASK)			REG = (DATA & (~MASK)) | (DATA & MASK)
-void heavyFunction() {for(int i = 0;i < 2000000; i++){}}
+
+
+__attribute__((optimize("O0"))) void heavyFunction() 
+{
+    for(int i = 0;i < 2000000; i++){}
+}
 
 
 

@@ -1,3 +1,14 @@
+/**
+ * @file interrupt_E.c
+ * @author Jan Choutka (CHO0178)
+ * @brief  tento program seznámí studenta s problematikou přerušení a principem využívání blokujících a neblokujících funkcí.
+ * @version 0.1
+ * @date 2026-05-15
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
+
 #include "littleHelper.h"
 #include "MKL25Z4.h"
 #include "wdog.h"
@@ -19,8 +30,8 @@ GPIO (CH41)
 */
 
 /*
-CZ: postupne spoustejte funkce z main nebo z handleru dle postupu
-EN: sequentially execute functions from main or from the handler according to the procedure
+CZ: postupne spoustejte funkce z main nebo z handleru dle postupu:
+EN: sequentially execute functions from main or from the handler according to the procedure:
 
 // Blocking function = B
 // Non blocking function = NB
@@ -49,13 +60,11 @@ int main(void)
 	btn_init();
 
 	// CZ: povol prijem preruseni pro port A a nastav prioritu na 2
-	// EN: enable processing of incoming interrupt signal from port A and set
-	// priority 2
+	// EN: enable processing of incoming interrupt signal from port A and set priority 2
 	
 	
 	// CZ: povol generovani preruseni v periferii port A pro sestupnou hranu
 	// EN: enable generating interrupt signal in port A for falling edge
-	// edge
 	
 	while (1) {
 		wdog_refresh();
@@ -83,22 +92,22 @@ void blockingFunctionExample()
 	//wait
 	heavyFunction();
 
-	// CZ: zapni diodu 1 a vypni diodu 2
-	// EN: turn on diode 1 and turn off diode 2
+	// CZ: zapni diodu 1 a vypni diodu 2 na LED bargrafu
+	// EN: turn on diode 1 and turn off diode 2 on LED bargraf
 
 	//wait
 	heavyFunction();
 
-	// CZ: zapni diodu 2 a vypni diodu 1
-	// EN: turn on diode 2 and turn off diode 1
+	// CZ: zapni diodu 2 a vypni diodu 1 na LED bargrafu
+	// EN: turn on diode 2 and turn off diode 1 on LED bargraf
 
 
 }
 
 void nonBlockingFunctionExample()
 {
-	// CZ: pokud je tlacitko 2 sepnute rozsvit diodu 3
-	// EN: if button 2 is pushed turn on diode 3
+	// CZ: pokud je tlacitko 2 sepnute rozsvit diodu 3 na LED bargrafu
+	// EN: if button 2 is pushed turn on diode 3 on LED bargraf
 
 }
 

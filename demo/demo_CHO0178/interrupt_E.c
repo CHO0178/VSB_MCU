@@ -63,8 +63,8 @@ int main(void)
 	// EN: enable processing of incoming interrupt signal from port A and set priority 2
 	
 	
-	// CZ: povol generovani preruseni v periferii port A pro sestupnou hranu
-	// EN: enable generating interrupt signal in port A for falling edge
+	// CZ: povol generovani preruseni v periferii port A pro sestupnou hranu tlačítka 1
+	// EN: enable generating interrupt signal in port A for falling edge of button 1
 	
 	while (1) {
 		wdog_refresh();

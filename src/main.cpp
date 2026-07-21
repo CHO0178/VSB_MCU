@@ -9,6 +9,7 @@
 extern "C" { // Allow C functions to be called from C++ code
 	#include "wdog.h"
 	#include "littleHelper.h"
+	#include "MKL25Z4.h"
 }
 
 __attribute__ ((weak)) int main(void)

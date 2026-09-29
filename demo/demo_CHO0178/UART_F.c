@@ -34,9 +34,12 @@ set speed to SBR 13
 #include "wdog.h"
 #include "MKL25Z4.h"
 
+void initComunication();
+
 int main(void)
 {
 	wdog_init(WDOG_CONF_DIS);
+	initComunication();
 	// enable receiving interrupts
 	NVIC_SetPriority(UART1_IRQn,2);
 	NVIC_EnableIRQ(UART1_IRQn);

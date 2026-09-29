@@ -36,11 +36,11 @@ int main(void)
 	//(1) nastavte druhy kanal na periodu 2s
 	PIT->CHANNEL[1].LDVAL = 48000000ul;
 	PIT->CHANNEL[1].TCTRL |= PIT_TCTRL_TEN_MASK | PIT_TCTRL_TIE_MASK;
-	PIT->CHANNEL[1].TCTRL = ~PIT_TCTRL_CHN_MASK;
+	PIT->CHANNEL[1].TCTRL &= ~PIT_TCTRL_CHN_MASK;
 	//(2) nastavte cas systicku na 0.5s
-//	SysTick->LOAD = 1500000 - 1u;
-//	SysTick->VAL = 0ul;
-//	SysTick->CTRL = SysTick_CTRL_ENABLE_Msk;
+	SysTick->LOAD = 1500000 - 1u;
+	SysTick->VAL = 0ul;
+	SysTick->CTRL = SysTick_CTRL_ENABLE_Msk;
 	while (1) {
 		wdog_refresh();
 	}

@@ -16,7 +16,7 @@ ADC
 		COCO	// complete conversion flag
 		DIFF	// differential mode of measurement
 	SC3
-		ADCO	// is continuous on one sample
+		ADCO	// is continuous or one sample
 	R			// result
 
 PORT
@@ -100,8 +100,8 @@ void setSingleTimeMeasurementOnTrigger()
 	// EN: set divider of signal source to divide by 4 and 8-bit conversion
 	ADC0->CFG1 |= (0b10 << 5);
 
-	// CZ: nastavte mereni na kontinnualni
-	// EN: set measurement to continuous measurement
+	// CZ: nastavte mereni na vzorkovani jednou
+	// EN: set measurement to sample once
 	ADC0->SC3 &= ~ADC_SC3_ADCO_MASK;
 }
 

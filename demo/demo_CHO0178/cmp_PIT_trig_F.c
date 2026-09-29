@@ -13,9 +13,9 @@
 /*
 DAC
 	DAT0L
-		DATA0			lower data pro p�evod
+		DATA0			lower data pro převod
 	DAT0H
-		DATA1			higher data pro p�evod
+		DATA1			higher data pro převod
 	C0
 		DACEN			povoli pouziti 12bit DAC
 CMP
@@ -25,7 +25,7 @@ CMP
 	MUXCR
 		PSEL			multiplex to positive input of CMP
 		MSEL			multiplex to negative input of CMP
-	SRC
+	SCR
 		IER				enable flag raising
 		CFR				flag interruptu
 	CR1
@@ -80,7 +80,7 @@ void setupNVICandPIT()
 	NVIC_SetPriority(PIT_IRQn, PIT_EXPT_PRI);
 	NVIC_EnableIRQ(PIT_IRQn);
 
-	NVIC_SetPriority(CMP0_IRQn, PIT_EXPT_PRI);
+	NVIC_SetPriority(CMP0_IRQn, CMP_EXPT_PRI);
 	NVIC_EnableIRQ(CMP0_IRQn);
 
 	PIT->MCR = PIT_MCR_FRZ_MASK;

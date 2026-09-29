@@ -30,7 +30,7 @@ void timerWait(unsigned int time)
 	// enable interrupts in TPM
 	TPM2->SC |= TPM_SC_TOIE_MASK;
 
-	while(waitingTicks<=calculatedNumberOfTicks){}  // wait for time to be evaluated
+	while(waitingTicks < calculatedNumberOfTicks){}  // wait for time to be evaluated
 
 	// turn off counting
 	TPM2->SC &= ~TPM_SC_CMOD_MASK;

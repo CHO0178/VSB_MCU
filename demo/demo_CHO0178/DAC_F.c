@@ -30,6 +30,7 @@ PORT
 
 int main(void)
 {
+	initDAC();
 
 	while(1)
 	{

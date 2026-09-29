@@ -13,7 +13,7 @@ void initRGB(){
 	// change multiplexer in port to connect the signal to peripheral GPIO
 	PORTB->PCR[18] = (PORTB->PCR[18] & (~(111<<8))) | (1<<8);
 	PORTB->PCR[19] = (PORTB->PCR[19] & (~(111<<8))) | (1<<8);
-	PORTD->PCR[1]  = (PORTB->PCR[1] & (~(111<<8))) | (1<<8);
+	PORTD->PCR[1]  = (PORTD->PCR[1] & (~(111<<8))) | (1<<8);
 	// set GPIO as output for RGB diode
 	GPIOB->PDDR |= (1<<18) | (1<<19);
 	GPIOD->PDDR |= (1<<1);
@@ -48,7 +48,7 @@ void initBarGraph(){
 	GPIOC->PDDR |=  (1<<10) | (1<<11) | (1<<12) | (1<<13); // 0b1111<<10; //
 	// turn off diodes
 	GPIOB->PDOR |= (1<<8) | (1<<9) | (1<<10) | (1<<11); //(1<<8) | (1<<9) | (1<<10) | (1<<11);
-	GPIOB->PDOR |= (1<<10) | (1<<11) | (1<<12) | (1<<13); //0b1111<<10; //
+	GPIOC->PDOR |= (1<<10) | (1<<11) | (1<<12) | (1<<13); //0b1111<<10; //
 }
 void setBarGraphVal(int val){
 	if(val <= 8){return;};

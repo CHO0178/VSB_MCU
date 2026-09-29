@@ -56,37 +56,22 @@ void initComunication()
 {
 	// CZ: nastavte vstupni multiplexer portu na periferii UART1
 	// EN: set input multiplexer in port to UART1 peripherals
-	PORTC->PCR[3] = PORT_PCR_MUX(3u);
-	PORTC->PCR[4] = PORT_PCR_MUX(3u);
 
 	// CZ: povolte preruseni z UART1 v NVIC
 	// EN: allow NVIC for receiving interrupts from UART1
-	NVIC_SetPriority(UART1_IRQn, UART1_EXPT_PRI);
-	NVIC_EnableIRQ(UART1_IRQn);
 
 	// CZ: nastavte rychlost komunikace na 115200 Bd
 	// EN: setup speed of communication to 115200 Bd
-	UART1->BDH = UART_BDH_SBR(UART1_SBR_115200 >> 8u);
-	UART1->BDL = UART_BDL_SBR(UART1_SBR_115200);
 
 	// CZ: povolte preruseni od prijmu, vysilac a prijimac
 	// EN: enable receive interrupt, transmitter and receiver
-	UART1->C2 = UART_C2_RIE_MASK | UART_C2_TE_MASK | UART_C2_RE_MASK;
 }
 
 void __attribute__ ((interrupt)) UART1_IRQHandler(void)
 {
 	// CZ: pokud prisel znak, ulozte jej a povolte preruseni od vysilani
-	// EN: received character is stored and transmit interrupt is enabled
-	if (UART1->S1 & UART_S1_RDRF_MASK) {
-		txData = UART1->D;
-		UART1->C2 |= UART_C2_TIE_MASK;
-	}
+	// EN: if character was received, store it and enable transmit interrupt
 
 	// CZ: pokud je vysilac pripraveny, poslete ulozeny znak zpet do pocitace
-	// EN: when transmitter is ready, send stored character back to computer
-	if ((UART1->C2 & UART_C2_TIE_MASK) && (UART1->S1 & UART_S1_TDRE_MASK)) {
-		UART1->D = txData;
-		UART1->C2 &= ~UART_C2_TIE_MASK;
-	}
+	// EN: if transmitter is ready, send stored character back to computer
 }

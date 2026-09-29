@@ -43,27 +43,21 @@ int main(void)
 	{
 		// CZ: nastavte vystupni napeti na 0V
 		// EN: set output voltage to 0V
-		setDACValue(DAC_MIN_VALUE);
 
 		// CZ: zamestnejte procesor
 		// EN: keep processor busy
-		wait();
 
 		// CZ: nastavte vystupni napeti na (3.3/2)V
 		// EN: set output voltage to (3.3/2)V
-		setDACValue(DAC_HALF_VALUE);
 
 		// CZ: zamestnejte procesor
 		// EN: keep processor busy
-		wait();
 
 		// CZ: nastavte vystupni napeti na 3.3V
 		// EN: set output voltage to 3.3V
-		setDACValue(DAC_MAX_VALUE);
 
 		// CZ: zamestnejte procesor
 		// EN: keep processor busy
-		wait();
 	}
 }
 
@@ -71,28 +65,22 @@ void initDAC()
 {
 	// CZ: nastavte napetovou referenci na DACREF_1 a typ trigru na SW
 	// EN: set reference voltage to DACREF_1 and trigger type to SW
-	DAC0->C0 = DAC_C0_DACRFS_MASK | DAC_C0_DACTRGSEL_MASK;
 
 	// CZ: povolte vyuziti DAC
 	// EN: enable DAC
-	DAC0->C0 |= DAC_C0_DACEN_MASK;
 }
 
 void setDACValue(uint16_t value)
 {
 	// CZ: nastavte spodnich 8 bitu hodnoty do DATL
 	// EN: set lower 8 bits of value to DATL
-	DAC0->DAT[0].DATL = value & 0xFFu;
 
 	// CZ: nastavte horni 4 bity hodnoty do DATH
 	// EN: set upper 4 bits of value to DATH
-	DAC0->DAT[0].DATH = (value >> 8u) & 0x0Fu;
 }
 
 void wait()
 {
 	// CZ: vytvorte prazdnou cekaci smycku
 	// EN: create empty wait loop
-	for (volatile uint32_t i = 0; i < DAC_WAIT_CYCLES; i++) {
-	}
 }

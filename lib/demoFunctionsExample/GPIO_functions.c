@@ -1,6 +1,6 @@
-#include "demo_CHO0178/demoFunctionsExample/exampleFunctions.h"
+#include "exampleFunctions.h"
 #include "MKL25Z4.h"
-#include "demo_CHO0178/littleHelper.h"
+#include "littleHelper.h"
 #include "GPIO_functions.h"
 // RGB diode
 
@@ -50,6 +50,7 @@ void initBarGraph(){
 	GPIOB->PDOR |= (1<<8) | (1<<9) | (1<<10) | (1<<11); //(1<<8) | (1<<9) | (1<<10) | (1<<11);
 	GPIOC->PDOR |= (1<<10) | (1<<11) | (1<<12) | (1<<13); //0b1111<<10; //
 }
+
 void setBarGraphVal(int val){
 	if(val <= 8){return;};
 	int i = 0;
@@ -61,6 +62,7 @@ void setBarGraphVal(int val){
 		val--;
 	}
 }
+
 void setBarGraphNumber(int num){
 	// invert order of bit in num
 	int reverseNum = 0;
@@ -76,9 +78,11 @@ void setBarGraphNumber(int num){
 	a = (a<<10);
 	GPIOC->PDOR = a | (GPIOC->PDOR & (~(0b1111<<10)));
 }
+
 void setBarGraphDiode(int diodeID){
 	barGraphDiodesGPIOs[diodeID]->PDOR |= (1<<barGraphDiodesPins[diodeID]);
 }
+
 void clearBarGraphDiode(int diodeID){
 	barGraphDiodesGPIOs[diodeID]->PDOR |= (1<<barGraphDiodesPins[diodeID]);
 }
